@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Farm Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🌾 Farm Name</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#products">Products</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Welcome to Our Farm</h1>
+        <p>Fresh, sustainable, and locally grown products straight to your table.</p>
+        <a href="#contact" class="btn">Get in Touch</a>
+    </header>
+
+    <section id="about">
+        <h2>Our Story</h2>
+        <p>We are dedicated to traditional, healthy farming methods to bring the highest quality produce and goods to our local community.</p>
+    </section>
+
+    <section id="products">
+        <h2>What We Offer</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3>Fresh Produce</h3>
+                <p>Organic vegetables and fruits harvested daily.</p>
+            </div>
+            <div class="product-card">
+                <h3>Local Goods</h3>
+                <p>High-quality farming and agricultural products.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Want to buy fresh or partner with us? Reach out directly!</p>
+        <p>📞 Phone: <strong>[Insert Phone Number]</strong></p>
+        <p>📍 Location: <strong>[Insert Farm Location]</strong></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Farm Name. Handcrafted by Lorena Manzo.</p>
+    </footer>
+
+</body>
+</html>
