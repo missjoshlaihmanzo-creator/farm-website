@@ -163,15 +163,17 @@ section h2::after {
     margin-bottom: 1.5rem;
     color: #64748b;
 }
-
 .contact-info ul {
-    list-style: none;
+    list-style: none; /* Removes the bullet points entirely */
+    padding: 0;
+    margin: 0;
 }
 
 .contact-info li {
     font-size: 1.1rem;
     margin-bottom: 1rem;
     color: #334155;
+    text-align: center; /* Keeps the text beautifully centered */
 }
 
 .contact-info strong {
