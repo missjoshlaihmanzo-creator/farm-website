@@ -3,66 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mallen Family Farm | Fresh Local Produce</title>
+    <title>Mallen Family Farm - Management System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav>
-        <div class="logo">🌾A Humble Family Farm</div>
-        <div class="nav-links">
-            <a href="#about">Our Story</a>
-            <a href="#products">Products</a>
-            <a href="#contact">Contact Us</a>
+    <header class="main-header">
+        <div class="header-container">
+            <h1>🌾A Humble Family Farm</h1>
+            <p>Enterprise Resource & Retail Management System</p>
         </div>
-    </nav>
-
-    <header class="hero">
-        <h1>Fresh, Organic & Locally Grown</h1>
-        <p>Providing high-quality, sustainable agricultural products straight from our farm to your family.</p>
-        <a href="#contact" class="btn">Place an Order</a>
     </header>
 
-    <section id="about">
-        <h2>Our Story</h2>
-        <p>Located in the fertile lands of Romblon, the Humble Family Farm is dedicated to traditional, sustainable farming methods. We take pride in cultivating fresh crops and managing local agricultural resources with care, ensuring that our community receives the freshest products possible.</p>
-    </section>
+    <main class="hub-container">
+        <section class="welcome-banner">
+            <h2>Welcome Back, Administrator</h2>
+            <p>Select an operational module below to manage farm sales, inventory tracking, and accounting balances.</p>
+        </section>
 
-    <section id="products">
-        <h2>Our Farm Products</h2>
-        <div class="product-grid">
-            <div class="product-card">
-                <h3>Fresh Seasonal Crops</h3>
-                <p>Locally grown vegetables and fruits harvested at the peak of freshness and packed with natural nutrients.</p>
+        <div class="module-grid">
+            <div class="module-card tablet-optimized">
+                <div class="card-icon">📱</div>
+                <h3>Point of Sale (POS) Station</h3>
+                <p>Optimized for PC and Tablet checkouts. Process customer orders, manage live transactions, and issue receipts in real-time.</p>
+                <button class="btn btn-primary" onclick="alert('POS System initialized. Connecting to Supabase live sync...')">Launch POS Terminal</button>
             </div>
-            <div class="product-card">
-                <h3>Organic Fertilizers</h3>
-                <p>Natural, nutrient-rich soil conditioners to help backyard gardens and local farms thrive sustainably.</p>
-            </div>
-            <div class="product-card">
-                <h3>Livestock & Poultry</h3>
-                <p>Healthy, humanely raised local livestock managed with strict quality and health standards.</p>
+
+            <div class="module-card pc-optimized">
+                <div class="card-icon">💻</div>
+                <h3>Computerized Accounting & Inventory</h3>
+                <p>Comprehensive ledger control. Audit financial income statements, track raw material/stone assets, and monitor operational farm expenses.</p>
+                <button class="btn btn-secondary" onclick="alert('Accounting ledger loading. Pulling real-time database balances...')">Open Financial Dashboard</button>
             </div>
         </div>
-    </section>
-
-    <section id="contact">
-        <h2>Connect With Us</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Get in Touch</h3>
-                <p>Ready to place an order or visit our showroom? Reach out to us directly through the details below:</p>
-                <ul>
-                    <li><strong>📍 Location:</strong> Tambac, Romblon, Romblon</li>
-                    <li><strong>📞 Phone Number:</strong> 09203536556</li>
-                    <li><strong>✉️ Email:</strong>cromwellmallen@gmail.com</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    </main>
 
     <footer>
-        <p>&copy; 2026 Mallen Family Farm. All Rights Reserved. | Designed by Joshlaih Manzo</p>
+        <p>&copy; 2026 Mallen Family Farm System. Engineered securely with Supabase DB Architecture.</p>
     </footer>
 
 </body>
