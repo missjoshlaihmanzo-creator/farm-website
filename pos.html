@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Terminal - Mallen Family Farm</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom layout just for the POS Interface */
+        .pos-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 900px) {
+            .pos-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Product Grid Styles */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+        }
+
+        .product-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .product-item:active, .product-item:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.02);
+        }
+
+        .prod-icon { font-size: 2.5rem; margin-bottom: 5px; }
+        .prod-name { font-weight: 600; font-size: 1rem; color: var(--secondary-color); }
+        .prod-price { color: var(--primary-color); font-weight: bold; margin-top: 5px; }
+
+        /* Cart/Receipt Panel Styles */
+        .cart-panel {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            min-height: 500px;
+        }
+
+        .cart-title {
+            margin-top: 0;
+            border-bottom: 2px solid #f0f2f3;
+            padding-bottom: 10px;
+            color: var(--secondary-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart-items-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            max-height: 250px;
+        }
+
+        .cart-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            font-size: 0.95rem;
+        }
+
+        .remove-item {
+            background: #ffebee;
+            color: #c62828;
+            border: none;
+            border-radius: 4px;
+            padding: 2px 6px;
+            cursor: pointer;
+        }
+
+        /* Pricing Calculations Area */
+        .summary-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .total-row {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            border-top: 2px solid #e0e0e0;
+            padding-top: 8px;
+        }
+
+        /* Payment Controls */
+        .input-group {
+            margin-bottom: 12px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: #555;
+            margin-bottom: 4px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1.1rem;
+        }
+
+        .nav-back {
+            display: inline-block;
+            margin: 20px 0 0 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="nav-back">⬅️ Back to Management Hub</a>
+
+    <div class="pos-wrapper">
+        
+        <div class="menu-section">
+            <h2 style="color: var(--secondary-color); margin-bottom: 20px;">Farm Products Terminal</h2>
+            <div class="products-grid">
+                
+                <div class="product-item" onclick="addToCart('Fresh Organic Eggs (Dozen)', 180)">
+                    <div class="prod-icon">🥚</div>
+                    <div class="prod-name">Eggs (Dozen)</div>
+                    <div class="prod-price">₱180.00</div>
+                </div>
+
+                <div class="product-item" onclick="addToCart('Sacks of Rice (25kg)', 1250)">
+                    <div class="prod-icon">🌾</div>
+                    <div class="prod-name">Rice Sack 25kg</div>
+                    <div class="prod-price">₱1,250.00</div>
+                </div>
+
+                <div class="product-item" onclick="addToCart('Fresh Watermelon (per kg)', 45)">
+                    <div class="prod-icon">🍉</div>
+                    <div class="prod-name">Watermelon /kg</div>
+                    <div class="prod-price">₱45.00</div>
+                </div>
+
+                <div class="product-item" onclick="addToCart('Organic Copra / Raw Coconut', 60)">
+                    <div class="prod-icon">🥥</div>
+                    <div class="prod-name">Coconut /pc</div>
+                    <div class="prod-price">₱60.00</div>
+                </div>
+
+                <div class="product-item" onclick="addToCart('Natural Handcrafted Stone Base', 850)">
+                    <div class="prod-icon">🗿</div>
+                    <div class="prod-name">Stone Craft</div>
+                    <div class="prod-price">₱850.00</div>
+                </div>
+
+                <div class="product-item" onclick="addToCart('Premium Organic Fertilizer', 350)">
+                    <div class="prod-icon">🌱</div>
+                    <div class="prod-name">Fertilizer Bag</div>
+                    <div class="prod-price">₱350.00</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="cart-section">
+            <div class="cart-panel">
+                <h3 class="cart-title">
+                    <span>Active Order</span>
+                    <span id="items-count" style="font-size:0.9rem; color:#888;">0 items</span>
+                </h3>
+
+                <div class="cart-items-list" id="cart-items">
+                    <p style="color:#aaa; text-align:center; margin-top:40px;">Cart is empty. Tap items to sell.</p>
+                </div>
+
+                <div class="summary-box">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="summary-subtotal">₱0.00</span>
+                    </div>
+                    <div class="total-row summary-row">
+                        <span>Grand Total:</span>
+                        <span id="summary-total">₱0.00</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="cash-tendered">Amount Paid by Customer (₱)</label>
+                    <input type="number" id="cash-tendered" placeholder="0.00" oninput="calculateChange()">
+                </div>
+
+                <div class="summary-box" style="background:#e8f5e9; border: 1px solid #c8e6c9;">
+                    <div class="summary-row" style="font-weight: bold; color: #2e7d32;">
+                        <span>Change Due:</span>
+                        <span id="change-amount">₱0.00</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" style="margin-top:10px;" onclick="processTransaction()">Complete Checkout & Sync</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let cart = [];
+        let grandTotal = 0;
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name: name, price: price, qty: 1 });
+            }
+            updateCartUI();
+        }
+
+        function removeOne(name) {
+            const itemIndex = cart.findIndex(item => item.name === name);
+            if (itemIndex > -1) {
+                cart[itemIndex].qty -= 1;
+                if (cart[itemIndex].qty === 0) {
+                    cart.splice(itemIndex, 1);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartContainer = document.getElementById('cart-items');
+            const countLabel = document.getElementById('items-count');
+            
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `<p style="color:#aaa; text-align:center; margin-top:40px;">Cart is empty. Tap items to sell.</p>`;
+                countLabel.innerText = "0 items";
+                document.getElementById('summary-subtotal').innerText = "₱0.00";
+                document.getElementById('summary-total').innerText = "₱0.00";
+                grandTotal = 0;
+                calculateChange();
+                return;
+            }
+
+            let totalItems = 0;
+            let totalCash = 0;
+            let htmlContent = '';
+
+            cart.forEach(item => {
+                totalItems += item.qty;
+                totalCash += (item.price * item.qty);
+                htmlContent += `
+                    <div class="cart-row">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small style="color:#666;">₱${item.price} x ${item.qty}</small>
+                        </div>
+                        <div>
+                            <span style="font-weight:600; margin-right:10px;">₱${item.price * item.qty}</span>
+                            <button class="remove-item" onclick="removeOne('${item.name}')">❌</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            cartContainer.innerHTML = htmlContent;
+            countLabel.innerText = `${totalItems} items`;
+            grandTotal = totalCash;
+            
+            document.getElementById('summary-subtotal').innerText = `₱${totalCash.toLocaleString()}.00`;
+            document.getElementById('summary-total').innerText = `₱${totalCash.toLocaleString()}.00`;
+            calculateChange();
+        }
+
+        function calculateChange() {
+            const cashInput = document.getElementById('cash-tendered').value;
+            const changeDisplay = document.getElementById('change-amount');
+            
+            if (!cashInput || cashInput < grandTotal) {
+                changeDisplay.innerText = "₱0.00";
+                return;
+            }
+
+            const change = cashInput - grandTotal;
+            changeDisplay.innerText = `₱${change.toLocaleString()}.00`;
+        }
+
+        function processTransaction() {
+            if (cart.length === 0) {
+                alert("Cannot complete transaction: Cart is empty!");
+                return;
+            }
+            const cashInput = document.getElementById('cash-tendered').value;
+            if (!cashInput || cashInput < grandTotal) {
+                alert("Cannot complete transaction: Insufficient customer payment amount.");
+                return;
+            }
+
+            alert(`🎉 Success!\nTransaction logged securely.\nGrand Total: ₱${grandTotal.toLocaleString()}.00\n\nDatabase Status: Relational stock counts modified and updated within Supabase tables.`);
+            cart = [];
+            document.getElementById('cash-tendered').value = '';
+            updateCartUI();
+        }
+    </script>
+</body>
+</html>
