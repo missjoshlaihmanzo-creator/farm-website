@@ -1,2 +1,1 @@
-# farm-website
-A responsive business showcase website built with HTML5 and CSS3 for a local farm.
+* 🌾 **Local Impact Work:** Architected and deployed production-ready web platforms for local enterprises, including building a **Computerized Accounting System & POS Software** for PC and Tablet deployment at the **A Humble Family Farm**.
