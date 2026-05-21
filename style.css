@@ -1,208 +1,127 @@
-/* --- Global Reset & Page Base --- */
-* {
+:root {
+    --primary-color: #2e7d32; /* Deep farm green */
+    --secondary-color: #37474f; /* Modern slate grey */
+    --background-bg: #f5f7f8;
+    --card-bg: #ffffff;
+    --text-color: #263238;
+}
+
+body {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-    background-color: #f8fafc; /* Clean, bright light gray background */
-    color: #334155; /* Soft charcoal text for readability */
-}
-
-/* --- Agricultural Navigation Bar --- */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 10%;
-    background-color: #1e3a1e; /* Deep forest green */
-    border-bottom: 4px solid #4b8b3b; /* Vibrant leaf green border */
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-nav .logo {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #ffffff;
-}
-
-nav .nav-links a {
-    color: #e2e8f0;
-    text-decoration: none;
-    margin-left: 2rem;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-nav .nav-links a:hover {
-    color: #a3e635; /* Bright lime highlight on hover */
-}
-
-/* --- Hero Showcase Header --- */
-.hero {
-    text-align: center;
-    padding: 8rem 2rem;
-    background: linear-gradient(rgba(30, 58, 30, 0.85), rgba(15, 23, 42, 0.4)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80');
-    background-size: cover;
-    background-position: center;
-    color: #ffffff;
-}
-
-.hero h1 {
-    font-size: 3.2rem;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero p {
-    font-size: 1.3rem;
-    max-width: 700px;
-    margin: 0 auto 2rem auto;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-    color: #f1f5f9;
-}
-
-/* Elegant Order Button */
-.btn {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    background-color: #4b8b3b;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 30px;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-}
-
-.btn:hover {
-    background-color: #3b6e2e;
-    transform: scale(1.05);
-}
-
-/* --- Content Layout Base --- */
-section {
-    padding: 5rem 10%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-section h2 {
-    font-size: 2.2rem;
-    color: #1e3a1e;
-    margin-bottom: 2rem;
-    position: relative;
-}
-
-section h2::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 4px;
-    background-color: #4b8b3b;
-    margin-top: 0.5rem;
-    border-radius: 2px;
-}
-
-#about p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: #475569;
-}
-
-/* --- Products Cards Grid --- */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-}
-
-.product-card {
-    background-color: #ffffff;
-    padding: 2.5rem 2rem;
-    border-radius: 12px;
-    border-top: 5px solid #4b8b3b; /* Distinctive green top borders */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s;
-}
-
-.product-card:hover {
-    transform: translateY(-8px);
-}
-
-.product-card h3 {
-    color: #1e3a1e;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-}
-
-.product-card p {
-    color: #64748b;
+    background-color: var(--background-bg);
+    color: var(--text-color);
     line-height: 1.6;
 }
 
-/* --- Contact Details Block --- */
-.contact-container {
-    background-color: #ffffff;
-    padding: 3rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+.main-header {
+    background: linear-gradient(135deg, var(--primary-color), #1b5e20);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.contact-info h3 {
-    color: #1e3a1e;
-    margin-bottom: 1rem;
-}
-
-.contact-info p {
-    margin-bottom: 1.5rem;
-    color: #64748b;
-}
-.contact-info ul {
-    list-style: none; /* Removes the bullet points entirely */
-    padding: 0;
+.main-header h1 {
     margin: 0;
+    font-size: 2.5rem;
+    font-weight: 600;
 }
 
-.contact-info li {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: #334155;
-    text-align: center; /* Keeps the text beautifully centered */
+.hub-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-.contact-info strong {
-    color: #4b8b3b;
+.welcome-banner {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-/* --- Footer --- */
+.welcome-banner h2 {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+}
+
+/* Responsive Grid Matrix */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.module-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-top: 5px solid var(--secondary-color);
+}
+
+.module-card.tablet-optimized {
+    border-top-color: var(--primary-color);
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.module-card h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+}
+
+.module-card p {
+    color: #607d8b;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    min-height: 70px;
+}
+
+/* Button UI Components */
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1b5e20;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #263238;
+}
+
 footer {
     text-align: center;
-    padding: 2.5rem;
-    background-color: #111827; /* Deep charcoal black */
-    color: #9ca3af;
-    font-size: 0.95rem;
-}
-
-/* --- Responsive Formatting --- */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1.5rem;
-    }
-    nav .nav-links a {
-        margin: 0 1rem;
-    }
-    .hero h1 {
-        font-size: 2.3rem;
-    }
-    section {
-        padding: 3rem 5%;
-    }
+    padding: 40px 20px;
+    color: #90a4ae;
+    font-size: 0.85rem;
 }
